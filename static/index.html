@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+        <head>
+                <link rel="stylesheet" href="index2.css" type="text/css" />
+                
+                <link rel="icon" type="image/png" href="i7.png" />
+                <title>IFRS 7 Risk Reporting</title>
+                
+                <script type="text/javascript" charset="utf-8" src="libs/d3.v3.min.js"></script>
+                <script type="text/javascript" charset="utf-8" src="libs/underscore-min.js"></script>
+                <script type="text/javascript" charset="utf-8" src="libs/jstat.min.js"></script>
+                
+                <script type="text/javascript" charset="utf-8" src="libs/jquery.min.js"></script>
+
+                <script type="text/javascript" charset="utf-8" src="libs/googleAnalytics.js"></script>
+        
+                <script type="text/javascript" charset="utf-8" src="sunBurstGraph.js"></script>
+                <script type="text/javascript" charset="utf-8" src="hierarchy.js"></script>
+                <script type="text/javascript" charset="utf-8" src="core.js"></script>
+
+                <script>
+                        ga('create', 'UA-497441-8', 'auto');
+                        ga('send', 'pageview');
+                </script>
+        </head>
+        <body>
+                <div class="page cover">
+                        <div class="frontCover">
+                        
+                        </div>
+                </div>
+                
+                <div class="page">
+                        <div class="title gPlayBackground">   
+                                        IFRS 7 Risk Reporting. Simple.
+                        </div>
+                        <div class="content">
+                                <p>
+                                        IFRS7.org is a risk reporting platform built by John Orford and his team to make disclosure easier, more accurate, and reconcilable.
+                                </p>
+                                <p>
+                                        Get productive with IFRS7.org.
+                                </p>
+                        </div>
+                        
+                </div>
+                <div class="page">
+                        <div class="title  gPlayBackground">   
+                                Features.
+                        </div>
+                        <div class="content">
+                                <p>
+                                        IFRS7.org reports the nature and extent of risks to your portfolio arising from financial instruments as specified by IFRS*.
+                                </p>
+                                <hr />
+                                <h2>
+                                        Market Risk Analysis
+                                </h2>
+                                <p>
+                                        A sensitivity analysis of each market risk factor.
+                                </p>
+                                <hr />
+                                <h2>
+                                        Liquidity
+                                </h2>
+                                <p>
+                                        Breakdown by timing of cash flows.
+                                </p>
+                                <hr />
+                                <h2>
+                                        Credit
+                                </h2>
+                                <p>
+                                        Analytical disclosure of financial asset credit quality.
+                                </p>
+                                <hr />
+                                <h2>
+                                        Concentration
+                                </h2>
+                                <p>
+                                        Identify asset allocation over-weighting.
+                                </p>
+                                <hr />
+                                <p>
+                                        * See this <a class="external" target="_blank" href="http://www.iasplus.com/en/standards/ifrs/ifrs7">list of disclosures</a> on the IFRS website.
+                                </p>
+                        </div>
+                        
+                </div>
+                <div class="page" id="screencast">
+                        <div class="title gPlayBackground">   
+                                        Screencast.
+                        </div>
+                        
+                        
+                        <div class="content">
+                                
+                                <div class="videoContainer">
+                                        <video controls>                                                
+                                        
+                                                Your browser does not support the HTML video.
+                                        </video> 
+                                </div>
+                                <p>See how to use IFRS7.org.</p>
+                        </div>
+                        
+                </div>
+
+                <div class="page">
+                        <div class="title gPlayBackground">   
+                                        Quick Start.
+                        </div>
+                        <div class="content">
+                                <p>
+                                        Click the check boxes to analyse demo data.
+                                </p>
+                                <p>
+                                        Drag and drop files from your desktop onto the todo list below to analyse your own portfolios.
+                                </p>
+                                <p>
+                                        The required file formats are found behind the downloadable file links.
+                                </p>
+                                
+                                <div id="dropFile">
+                                        
+                                        <span>IFRS 7 Risk Reporting Todo List</span>
+                                        
+                                        <div class="todo">
+                                                <span><input type="checkbox" onchange="demoHoldingsDrop()" ></span>
+                                                <span class="todoHolding">Holdings file</span><span> (<a href="demo/demo_portfolio.csv">demo file</a>)</span>
+                                        </div>
+                                        <div class="todo">
+                                                <span><input type="checkbox" onchange="demoShockDrop()" ></span>
+                                                <span class="todoShock">Shock file</span><span> (<a href="demo/demo_shocks.csv">demo file</a>)</span>
+                                        </div>
+                                        
+                                </div>
+                                <br />
+                                
+                                <!--*****************************************************************************-->
+                                <!--*****************************************************************************-->
+                                <div >
+                                        <h2 class="createHierarchyHeader">Concentration Analysis</h2>
+                                        
+                                        <span class="createHierarchy"></span>
+                                        
+                                </div>
+                                
+                                <br />
+                        
+                                <div class="fiResults" >
+                                        
+                                        <div>
+                                                <h2>Liquidity</h2>
+                                        </div>
+                                        
+                                        <div>
+                                                <span class="factor">Total Fund Duration&nbsp;&nbsp;&nbsp;</span>
+                                                <span class="shock" name="maturity"><span>
+                                        </div>
+                                        <div class="pieHolder">
+                                                        <div id="positiveLiquidity" class="pie">Positive Breakdown</div>
+                                                        <div id="negativeLiquidity" class="pie">Negative Breakdown</div>
+                                        </div>
+                                        <br />
+                                        <div>
+                                                <h2>Credit</h2>
+                                                
+                                                <span class='factor'>Credit Spread</span>
+                                                <span class='shock' name="credit"><span>
+                                        </div>
+                                        <div class="pieHolder">
+                                                <div id="positiveSpread" class = "pie">(+)</div>
+                                                <div id="negativeSpread" class = "pie">(-)</div>
+                                        </div>
+                                </div>
+                                <br />
+                                <div class="sensitivityResults" >
+                                        <h2>Sensitivities</h2>
+                                        <span id="holdingsPrompt">Please upload a holdings file</span>
+                                        <div name="stress"></div>
+                                </div>
+                                
+                                <br />
+                                <div class="downloadResultsSpan">
+                                        <a class='downloadResults' href="#" download="results.csv" target="_blank" onClick='downloadCSV()'>Download Results</a>
+                                </div>
+                                
+                                <!--*****************************************************************************-->
+                                <!--*****************************************************************************-->
+                                
+                        </div>
+                        
+                </div>
+                <div class="page">
+                        <div class="title gPlayBackground">   
+                                        Support.
+                        </div>
+                        <div class="content">
+                        <h2>
+                               Join Our Community
+                        </h2>
+                        <p>
+                               Forum
+                        </p>
+                        <p>
+                               Mailing List
+                        </p>
+                        <hr />
+                     <h2>
+                               Commercial Support
+                       </h2>
+                       <p>
+                               The software is free, but your team's time is valuable.
+                               </p>
+                               <p>
+                               A support subscription is invaluable for business analysts and developers alike.
+                                </p>
+                                
+                        
+                                <div class="buyBox">
+                                        <ul>
+                                                <li>One on one assistance direct from source</li> 
+                                                <li>Chat, phone or email</li> 
+                                                <li>Responses within one business day</li> 
+                                                <li>Private support interaction</li>
+                                        </ul>
+                                        
+
+                                        <form action="/charge" method="POST">
+
+                                                <script src="https://checkout.stripe.com/checkout.js"></script>
+
+                                                <a href="#" id="customButton">Subscribe.</a> USD 999 per annum.
+
+                                                <script>
+                                                  var handler = StripeCheckout.configure({
+                                                    key: 'pk_test_Ux8iIRngiTeajoORq3vGYOSv',
+                                                    image: 'i7.png',
+                                                    token: function(token) {
+                                                      // Use the token to create the charge with a server-side script.
+                                                      // You can access the token ID with `token.id`
+                                                      //document.getElementsByTagName("form")[0].submit(token);
+                                                      var emailInput = $('<input type="hidden" name="stripeEmail" />').val(token.email);                      
+                                                      var tokenInput = $('<input type="hidden" name="stripeToken" />').val(token.id);
+                                                      $("form").append(tokenInput).append(emailInput).submit();  
+                                                    }
+                                                  });
+
+                                                  $('#customButton').on('click', function(e) {
+                                                    // Open Checkout with further options
+                                                    handler.open({
+                                                      name: 'IFRS7.org',
+                                                      description: '1 Year Subscription',
+                                                      amount: 99900
+                                                    });
+                                                    e.preventDefault();
+                                                  });
+
+                                                  // Close Checkout on page navigation
+                                                  $(window).on('popstate', function() {
+                                                    handler.close();
+                                                  });
+                                                </script>
+
+
+                                        </form>
+
+
+
+
+
+
+
+
+                                </div>
+                                
+                                
+                        </div>
+                        
+                </div>
+                
+                <div class="page">
+                        <div class="title gPlayBackground">   
+                                Miscellanea
+                        </div>
+                        <div class="content">
+                                <h2>The Team</h2>
+
+
+                                <p>John Orford, Founder. Previously head of StateStreet's risk analysis business in APAC.</p>
+
+
+                                <p>Kirstin Bummeln, PhD. Financial engineering advisor.</p>
+
+                                <p>Veronica Lee, CA, PhD. Experimental economics advisor.</p>
+        
+                                <hr />
+                                <h2>Contact</h2>
+
+                                <p>Email: <a href="mailto:John.Orford@Gmail.com">John.Orford@Gmail.com</a></p>
+
+                                <p>Phone: +65 8321 4404</p>
+
+                                
+                                <hr />
+                                <h2>Source Code</h2>
+
+                                <p>All the code can be downloaded, tailored and run from a desktop or server.</p>
+
+                                <p>Moreover you can commercialise and add this service to your organisation's intellectual property as per the AGPLv3 license.</p>
+                                
+                        
+                                <hr />
+                                <h2>Legal</h2>
+                                <p>&copy; John Orford 2015</p>
+                                <p>Please refer to the <a class="external" href="https://www.gnu.org/licenses/agpl-3.0.html">AGPLv3 license</a> for liability limitation and disclaimer of warranty information.</p>
+                        </div>
+                        
+                </div>
+        </body>
+        
+        <script type="text/javascript" charset="utf-8" src="index.js"></script>
+        <script> initSetup(); </script>
+</html>

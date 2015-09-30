@@ -1,0 +1,56 @@
+
+
+
+
+initSetup
+        --> browser feature check
+        --> reset checkboxes
+        
+
+
+
+checkboxes >
+        --> readCSVFile
+                --> holdings drop
+                --> shock drop
+                
+drap and drop setup
+        --> parse
+        --> check file format
+        --> holdings drop
+        --> shock drop
+
+holdings drop
+        --> reset form
+        --> add hierarchy dropdown
+        --> set holdings data to parsed data
+        --> process file
+        
+shock file drop
+        --> reset form / data
+        --> add sensitivity scenarios to global variable
+        --> process holdings
+        
+        process holdings
+                --> add to globalPositions global vars
+                --> calc weighted averages
+                --> aggregate shocks
+                --> percentage complete update
+
+
+
+Select item from dropdown
+        --> addToHierarchy
+                --> hierarchyCalculations
+                        --> positive / negative position split
+                        --> totalNPV
+                        --> positive / negative analytic ratio (for pie chart sizes)
+                        --> buildHierarchy
+                                --> create pie
+                                        
+                                        
+                                        
+Download link 
+        --> 
+                
+
